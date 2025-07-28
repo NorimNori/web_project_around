@@ -8,7 +8,39 @@
     <link rel="stylesheet" href="./pages/index.css" />
     <title>Around the US</title>
   </head>
-  <body>
-    Coldplay
+  <body class="page">
+    <div class="page__section page__content">
+      <header class="header page__section">
+        <img
+          class="header__image"
+          src="./images/logo.svg"
+          alt="Around the U.S.logo"
+        />
+      </header>
+
+      <main class="content">
+        <section class="profile page__section">
+          <img
+            class="profile__image"
+            src="./images/jacques-cousteau.jpg"
+            alt="Imágen de perfil"
+          />
+          <div class="profile__info">
+            <h1 class="profile__title">Jacques Cousteau</h1>
+            <button class="profile__edit-button" type="button"></button>
+            <p class="profile__description">Explorador</p>
+          </div>
+          <button class="profile__add-button" type="button"></button>
+        </section>
+
+        <section class="cards">
+          <ul class="cards__list"></ul>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2025 Gloria Rangel</p>
+      </footer>
+    </div>
   </body>
 </html>
