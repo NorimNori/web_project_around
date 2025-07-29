@@ -77,10 +77,10 @@
 }
 
 .popup__save-button {
-  background-color: transparent;
-  border: solid 1px #c4c4c4;
+  background-color: #000;
+  border: none;
   border-radius: 2px;
-  color: #c4c4c4;
+  color: #fff;
   max-width: 100%;
   cursor: pointer;
   height: 50px;
@@ -90,7 +90,9 @@
 }
 
 .popup__save-button:hover {
-  background-color: #555;
+  background-color: transparent;
+  border: solid 1px #c4c4c4;
+  color: #c4c4c4;
 }
 
 @media screen and (max-width: 620px) {

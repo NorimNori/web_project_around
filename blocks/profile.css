@@ -29,10 +29,9 @@
 .profile__edit-button {
   background: transparent url(../images/edit-button.svg) center no-repeat;
   grid-area: button;
-  margin-left: 10px;
   border: solid #fff 1px;
   padding: 10px;
-  margin: 0;
+  margin: 0 10px 0;
   transition: opacity 0.3s ease;
 }
 
@@ -151,5 +150,9 @@
 
   .profile__image {
     margin-bottom: 30px;
+  }
+
+  .profile__edit-button {
+    margin: 0;
   }
 }

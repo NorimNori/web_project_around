@@ -10,8 +10,7 @@
   .footer__copyright {
     line-height: 17px;
     font-size: 14px;
-    margin-top: 48px;
-    margin-bottom: 36px;
+    padding: 46px 30px 36px;
     justify-content: center;
   }
 }
