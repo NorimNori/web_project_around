@@ -41,6 +41,30 @@
       <footer class="footer">
         <p class="footer__copyright">&copy; 2025 Gloria Rangel</p>
       </footer>
+
+      <section class="modal" id="profile-edit-modal">
+        <div class="modal__container">
+          <button class="modal__close" id="profile-modal-close-button"></button>
+          <p class="modal__heading">Editar perfil</p>
+          <form class="modal__form">
+            <input
+              type="text"
+              id="form-input-title"
+              class="modal__input"
+              name="title"
+              placeholder="Nombre"
+            />
+            <input
+              type="text"
+              id="form-input-description"
+              class="modal__input"
+              name="description"
+              placeholder="Acerca de mí"
+            />
+            <button class="modal__save-button">Guardar</button>
+          </form>
+        </div>
+      </section>
     </div>
   </body>
 </html>
