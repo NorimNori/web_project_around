@@ -1,6 +1,6 @@
 .modal {
   display: flex;
-  visibility: visible;
+  visibility: hidden;
   align-items: center;
   justify-content: center;
   position: fixed;
