@@ -14,6 +14,12 @@ const closeNewCardPopupButton = newCardPopup.querySelector(
 const cardsList = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
+const imagePopup = document.querySelector(".popup__preview");
+const popupImage = imagePopup.querySelector(".popup__image-preview");
+const popupTitle = document.querySelector(".popup__image-title");
+const closeImagePopupButton = document.querySelector(
+  ".popup__close_image-preview"
+);
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -25,12 +31,16 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
+closeImagePopupButton.addEventListener("click", () => closePopup(imagePopup));
+
 profileEditButton.addEventListener("click", () => openPopup(profileEditPopup));
+
 closeEditModalButton.addEventListener("click", () =>
   closePopup(profileEditPopup)
 );
 
 newCardButton.addEventListener("click", () => openPopup(newCardPopup));
+
 closeNewCardPopupButton.addEventListener("click", () =>
   closePopup(newCardPopup)
 );
@@ -65,6 +75,14 @@ function getCardElement(cardData) {
 
   deleteButton.addEventListener("click", () => {
     cardElement.remove();
+  });
+
+  cardImage.addEventListener("click", () => {
+    popupImage.src = cardData.link;
+    popupImage.alt = cardData.name;
+    popupTitle.textContent = cardData.name;
+
+    openPopup(imagePopup);
   });
 
   return cardElement;

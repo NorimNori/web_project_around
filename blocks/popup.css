@@ -95,6 +95,33 @@
   color: #c4c4c4;
 }
 
+.popup__container_image-preview {
+  margin: 0 auto;
+  background-color: transparent;
+  padding: 0;
+  max-width: 75vw;
+  max-height: 75vh;
+  width: auto;
+  height: auto;
+}
+
+.popup__image-preview {
+  object-fit: contain;
+  max-height: 75vh;
+  max-width: 75vw;
+  width: auto;
+  height: auto;
+}
+
+.popup__close_image-preview {
+  bottom: calc(100% + 15px);
+}
+
+.popup__image-title {
+  padding-top: 15px;
+  font-size: 12px;
+}
+
 @media screen and (max-width: 620px) {
   .popup__container {
     width: 282px;
