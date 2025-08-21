@@ -11,6 +11,9 @@ const newCardPopup = document.querySelector("#new-card-popup");
 const closeNewCardPopupButton = newCardPopup.querySelector(
   "#new-card-popup-close-button"
 );
+const cardsList = document.querySelector(".cards__list");
+const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -44,3 +47,27 @@ function handleProfileFormSubmit(e) {
 }
 
 formElement.addEventListener("submit", handleProfileFormSubmit);
+
+function getCardElement(cardData) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardTitle = cardElement.querySelector(".card__title");
+  const cardImage = cardElement.querySelector(".card__image");
+
+  cardTitle.textContent = cardData.name;
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
+
+  return cardElement;
+}
+
+function handleAddCardFormSubmit(evt) {
+  evt.preventDefault();
+  const cardName = newCardPopup.querySelector("#card-name-input").value;
+  const cardLink = newCardPopup.querySelector("#card-link-input").value;
+  const newCard = getCardElement({ name: cardName, link: cardLink });
+  cardsList.prepend(newCard);
+  closePopup(newCardPopup);
+  formElement.reset();
+}
+
+newCardPopup.addEventListener("submit", handleAddCardFormSubmit);
