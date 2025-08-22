@@ -155,4 +155,23 @@
   .popup__input:last-of-type {
     margin-bottom: 30px;
   }
+
+  .popup__close_image-preview {
+    bottom: calc(100% - 30px);
+  }
+
+  .popup__container_image-preview {
+    margin: 0 auto;
+    background-color: transparent;
+    padding: 0;
+    max-width: 75vw;
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+  }
+
+  .popup__close_image-preview {
+    bottom: calc(100% + 25px);
+    left: calc(100% - 25px);
+  }
 }
