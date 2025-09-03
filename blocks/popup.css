@@ -86,11 +86,18 @@
   height: 50px;
   margin: 0;
   padding: 0;
-  transition: background-color 0.7s ease;
+  transition: opacity 0.7s ease;
+}
+
+.popup__button_disabled {
+  background-color: transparent;
+  color: #ccc;
+  border: solid 1px #c4c4c4;
+  pointer-events: none;
 }
 
 .popup__save-button:hover {
-  background-color: transparent;
+  opacity: 0.7;
   border: solid 1px #c4c4c4;
   color: #c4c4c4;
 }
@@ -112,12 +119,6 @@
 
 .popup__input_type_error {
   border-bottom: red 1px solid;
-}
-
-.popup__button_disabled {
-  background-color: white;
-  color: #c01616;
-  pointer-events: none;
 }
 
 .popup__container_image-preview {

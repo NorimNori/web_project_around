@@ -1,4 +1,8 @@
-import { enableValidation, validationConfig } from "./validate.js";
+import {
+  enableValidation,
+  validationConfig,
+  resetValidation,
+} from "./validate.js";
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditPopup = document.querySelector(".popup");
 const closeEditPopupButton = document.querySelector(".popup__close");
@@ -134,6 +138,7 @@ function createCard({ name, link }) {
 profileEditButton.addEventListener("click", () => {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileDescription.textContent;
+  resetValidation(formElement, validationConfig);
   openPopup(profileEditPopup);
 });
 
@@ -142,7 +147,13 @@ closeEditPopupButton.addEventListener("click", () =>
 );
 formElement.addEventListener("submit", handleProfileFormSubmit);
 
-newCardButton.addEventListener("click", () => openPopup(newCardPopup));
+newCardButton.addEventListener("click", () => {
+  const newCardForm = newCardPopup.querySelector(".popup__form");
+
+  resetValidation(newCardForm, validationConfig);
+
+  openPopup(newCardPopup);
+});
 closeNewCardPopupButton.addEventListener("click", () =>
   closePopup(newCardPopup)
 );

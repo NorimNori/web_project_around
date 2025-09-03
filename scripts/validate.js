@@ -2,9 +2,9 @@ export const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__save-button",
-  inactiveButtonClass: ".popup__button_disabled",
-  inputErrorClass: ".popup__input_type_error",
-  errorClass: ".popup__error_visible",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
 };
 
 function showInputError(formElement, inputElement, errorMessage, settings) {
@@ -64,6 +64,21 @@ function setEventListeners(formElement, settings) {
       toggleButtonState(inputList, buttonElement, settings);
     });
   });
+}
+
+export function resetValidation(formElement, settings) {
+  const inputList = Array.from(
+    formElement.querySelectorAll(settings.inputSelector)
+  );
+  const buttonElement = formElement.querySelector(
+    settings.submitButtonSelector
+  );
+
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, settings);
+  });
+
+  toggleButtonState(inputList, buttonElement, settings);
 }
 
 export function enableValidation(settings) {
