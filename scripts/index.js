@@ -1,3 +1,4 @@
+import { enableValidation, validationConfig } from "./validate.js";
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditPopup = document.querySelector(".popup");
 const closeEditPopupButton = document.querySelector(".popup__close");
@@ -124,3 +125,5 @@ closeNewCardPopupButton.addEventListener("click", () =>
 newCardPopup.addEventListener("submit", handleAddCardFormSubmit);
 
 closeImagePopupButton.addEventListener("click", () => closePopup(imagePopup));
+
+enableValidation(validationConfig);

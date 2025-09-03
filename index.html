@@ -63,15 +63,23 @@
               id="form-input-title"
               class="popup__input"
               name="title"
+              minlength="2"
+              maxlength="40"
               placeholder="Nombre"
+              required
             />
+            <span id="form-input-title-error" class="popup__error"></span>
             <input
               type="text"
               id="form-input-description"
               class="popup__input"
               name="description"
+              minlength="2"
+              maxlength="200"
               placeholder="Acerca de mí"
+              required
             />
+            <span id="form-input-description-error" class="popup__error"></span>
             <button class="popup__save-button">Guardar</button>
           </form>
         </div>
@@ -90,15 +98,21 @@
               id="card-name-input"
               class="popup__input"
               name="title"
+              minlength="2"
+              maxlength="30"
               placeholder="Título"
+              required
             />
+            <span id="card-name-input-error" class="popup__error"></span>
             <input
               type="url"
               id="card-link-input"
               class="popup__input"
               name="url"
               placeholder="Enlace a la imagen"
+              required
             />
+            <span id="card-link-input-error" class="popup__error"></span>
             <button class="popup__save-button">Crear</button>
           </form>
         </div>
@@ -113,6 +127,6 @@
       </section>
     </div>
 
-    <script src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
