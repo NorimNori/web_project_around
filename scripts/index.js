@@ -61,6 +61,19 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
+function handleOverlayClick(evt) {
+  if (evt.target.classList.contains("popup_opened")) {
+    closePopup(evt.target);
+  }
+}
+
+function enablePopupOverlayClose() {
+  const popups = document.querySelectorAll(".popup");
+  popups.forEach((popup) => {
+    popup.addEventListener("mousedown", handleOverlayClick);
+  });
+}
+
 function handleProfileFormSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = nameInput.value;
@@ -127,3 +140,4 @@ newCardPopup.addEventListener("submit", handleAddCardFormSubmit);
 closeImagePopupButton.addEventListener("click", () => closePopup(imagePopup));
 
 enableValidation(validationConfig);
+enablePopupOverlayClose();
