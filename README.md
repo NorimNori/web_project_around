@@ -2,7 +2,7 @@
 
 ## 📝 Descripción del proyecto
 
-**"Alrededor de los EE. UU." (Parte 1)** es una galería web interactiva creada como parte del séptimo proyecto del bootcamp de desarrollo web de [TripleTen](https://tripleten.com/). En esta primera etapa, el enfoque estuvo en manipular el DOM con JavaScript puro, permitiendo editar información del perfil, agregar tarjetas nuevas y abrir ventanas emergentes.
+**"Alrededor de los EE. UU."** es una galería web interactiva creada como parte del séptimo proyecto del bootcamp de desarrollo web de [TripleTen](https://tripleten.com/). En esta etapa, el enfoque se centró en mejorar la experiencia del usuario, incorporando validación de formularios con retroalimentación en tiempo real y visualización de errores en la interfaz. Además, se implementó interacción mediante teclado para cerrar las ventanas emergentes y también al hacer clic fuera de ellas.
 
 ### 🖱️ Funcionalidades implementadas:
 - Ventanas modales con funcionalidad de abrir/cerrar.
@@ -13,12 +13,15 @@
 - Botón de "like"que cambia de estado activo/inactivo.  
 - Botón para eliminar tarjeta, que permite removerla de la galería.  
 - Vista ampliada de la imagen mediante un popup modal al hacer clic sobre la foto.
+- Validación de formularios.
+- Cierre de popup haciendo clic en superposición y al pulsar tecla *Esc*.
 
 ### 💻 Tecnologías utilizadas:
 - HTML5
 - CSS3
 - ES6
-- JavaScript (DOM, eventos, manipulación de nodos)
+- Figma
+- JavaScript (DOM, eventos, manipulación de nodos, módulos)
 - Metodología BEM
 - Git & GitHub Pages
 
@@ -31,6 +34,7 @@ Puedes ver el proyecto en línea accediendo a través del siguiente enlace:
 
 ![Captura](./images/around-us-overview.png)
 ![Captura](./images/around-us-popup-profile.png)
+![Captura](./images/around-us-form-validation.png)
 ![Captura](./images/around-us-image-popup.png)
 
 ## 💡 Planes de mejora
