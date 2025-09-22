@@ -2,7 +2,7 @@
 
 ## 📝 Descripción del proyecto
 
-**"Alrededor de los EE. UU."** es una galería web interactiva creada como parte del séptimo proyecto del bootcamp de desarrollo web de [TripleTen](https://tripleten.com/). En esta etapa, el enfoque se centró en mejorar la experiencia del usuario, incorporando validación de formularios con retroalimentación en tiempo real y visualización de errores en la interfaz. Además, se implementó interacción mediante teclado para cerrar las ventanas emergentes y también al hacer clic fuera de ellas.
+**"Alrededor de los EE. UU."** es una galería web interactiva creada como parte del décimo proyecto del bootcamp de desarrollo web de [TripleTen](https://tripleten.com/). Ofrece una experiencia de usuario completa que incluye validación de formularios, visualización de errores en la interfaz, edición de perfil, creación de nuevas tarjetas con imagen, botones de “me gusta” y eliminación. Además, incorpora accesibilidad mejorada al permitir cerrar ventanas emergentes tanto con el teclado como haciendo clic fuera de ellas..
 
 ### 🖱️ Funcionalidades implementadas:
 - Ventanas modales con funcionalidad de abrir/cerrar.
@@ -22,6 +22,7 @@
 - ES6
 - Figma
 - JavaScript (DOM, eventos, manipulación de nodos, módulos)
+- POO
 - Metodología BEM
 - Git & GitHub Pages
 
