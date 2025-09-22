@@ -182,10 +182,6 @@
     margin-bottom: 30px;
   }
 
-  .popup__close_image-preview {
-    bottom: calc(100% - 30px);
-  }
-
   .popup__container_image-preview {
     margin: 0 auto;
     background-color: transparent;
