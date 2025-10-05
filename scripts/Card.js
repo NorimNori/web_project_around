@@ -1,8 +1,9 @@
 export default class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -30,17 +31,7 @@ export default class Card {
   }
 
   _handlePreview() {
-    const popupImage = document.querySelector(".popup__preview");
-    const popupImgElement = popupImage.querySelector(".popup__image-preview");
-    const popupCaption = popupImage.querySelector(".popup__image-title");
-
-    popupImgElement.src = this._link;
-    popupImgElement.alt = this._name;
-    popupCaption.textContent = this._name;
-
-    import("./utils.js").then(({ openPopup }) => {
-      openPopup(popupImage);
-    });
+    this._handleCardClick(this._name, this._link);
   }
 
   generateCard() {
