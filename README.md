@@ -44,7 +44,6 @@ A futuro, me gustaría implementar las siguientes mejoras:
 
 - Incorporar almacenamiento local o backend para persistencia de datos.
 - Añadir animaciones suaves al abrir/cerrar popups.
-- Reestructurar el código con clases de JavaScript para mejor mantenimiento.
 
 ---
 
