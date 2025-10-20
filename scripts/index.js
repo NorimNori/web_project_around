@@ -10,6 +10,9 @@ import { api } from "../scripts/Api.js";
 const cardsContainerSelector = ".cards__list";
 const profileEditButton = document.querySelector(".profile__edit-button");
 const addCardButton = document.querySelector(".profile__add-button");
+const profileImage = document.querySelector(".profile__image");
+const profileTitle = document.querySelector(".profile__title");
+const profileDescription = document.querySelector(".profile__description");
 const profilePopupSelector = "#profile-edit-popup";
 const addCardPopupSelector = "#new-card-popup";
 const imagePopupSelector = ".popup__preview";
@@ -95,7 +98,10 @@ addCardButton.addEventListener("click", () => {
 });
 
 api.getUserInfo().then((userData) => {
-  console.log("respuesta:", userData);
+  profileImage.src = userData.avatar;
+  profileImage.alt = `Imágen de perfil de ${userData.name}`;
+  profileTitle.textContent = userData.name;
+  profileDescription.textContent = userData.about;
 });
 
 api.getInitialCards().then((initialCardsData) => {
