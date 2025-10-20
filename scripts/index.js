@@ -97,3 +97,7 @@ addCardButton.addEventListener("click", () => {
 api.getUserInfo().then((userData) => {
   console.log("respuesta:", userData);
 });
+
+api.getInitialCards().then((initialCardsData) => {
+  console.log("cartas:", initialCardsData);
+});
