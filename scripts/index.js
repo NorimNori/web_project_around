@@ -4,7 +4,7 @@ import Section from "./Section.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
-import { initialCards, validationConfig } from "./validate.js";
+import { validationConfig } from "./validate.js";
 import { api } from "../scripts/Api.js";
 
 const cardsContainerSelector = ".cards__list";
@@ -34,7 +34,7 @@ function createCard(data) {
 
 const cardSection = new Section(
   {
-    items: initialCards,
+    items: [],
     renderer: (item) => {
       const cardElement = createCard(item);
       cardSection.addItem(cardElement);
@@ -42,7 +42,6 @@ const cardSection = new Section(
   },
   cardsContainerSelector
 );
-console.log(initialCards);
 
 cardSection.renderItems();
 
@@ -104,6 +103,17 @@ api.getUserInfo().then((userData) => {
   profileDescription.textContent = userData.about;
 });
 
-api.getInitialCards().then((initialCardsData) => {
-  console.log("cartas:", initialCardsData);
+api.getInitialCards().then((cards) => {
+  const cardSection = new Section(
+    {
+      items: cards,
+      renderer: (item) => {
+        const cardElement = createCard(item);
+        cardSection.addItem(cardElement);
+      },
+    },
+    cardsContainerSelector
+  );
+
+  cardSection.renderItems();
 });
