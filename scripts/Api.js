@@ -30,6 +30,19 @@ class Api {
       .then(this._checkResponse)
       .catch(this._handleError);
   }
+
+  updateUserInfo(name, about) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        about,
+      }),
+    })
+      .then(this._checkResponse)
+      .catch(this._handleError);
+  }
 }
 
 export const api = new Api({

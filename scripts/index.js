@@ -45,19 +45,24 @@ const cardSection = new Section(
 
 cardSection.renderItems();
 
-const editProfilePopup = new PopupWithForm(profilePopupSelector, () => {
-  const { name, job } = userInfo.getUserInfo();
-
+function handleProfileFormUpdate() {
   const nameInput = document.querySelector("#form-input-title");
-  const jobInput = document.querySelector("#form-input-description");
+  const aboutInput = document.querySelector("#form-input-description");
 
-  userInfo.setUserInfo({
-    name: nameInput.value,
-    job: jobInput.value,
+  api.updateUserInfo(nameInput.value, aboutInput.value).then((data) => {
+    profileTitle.textContent = data.name;
+    profileDescription.textContent = data.about;
+    profileImage.src = data.avatar;
+
+    editProfilePopup.close();
   });
+}
 
-  editProfilePopup.close();
-});
+const editProfilePopup = new PopupWithForm(
+  profilePopupSelector,
+  handleProfileFormUpdate
+);
+
 editProfilePopup.setEventListeners();
 
 const addCardPopup = new PopupWithForm(addCardPopupSelector, () => {
