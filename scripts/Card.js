@@ -2,6 +2,7 @@ export default class Card {
   constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
+    this._isLiked = data.isLiked;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -23,6 +24,7 @@ export default class Card {
 
   _handleLike() {
     this._likeButton.classList.toggle("card__like-button_active");
+    this._isLiked = !this._isLiked;
   }
 
   _handleDelete() {
@@ -44,6 +46,10 @@ export default class Card {
     this._image.src = this._link;
     this._image.alt = this._name;
     this._title.textContent = this._name;
+
+    if (this._isLiked) {
+      this._likeButton.classList.add("card__like-button_active");
+    }
 
     this._setEventListeners();
 
