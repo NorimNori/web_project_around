@@ -65,18 +65,24 @@ const editProfilePopup = new PopupWithForm(
 
 editProfilePopup.setEventListeners();
 
-const addCardPopup = new PopupWithForm(addCardPopupSelector, () => {
+function handleAddNewCard() {
   const nameInput = document.querySelector("#card-name-input");
   const linkInput = document.querySelector("#card-link-input");
 
-  const newCard = createCard({
-    name: nameInput.value,
-    link: linkInput.value,
-  });
+  api
+    .addNewCard({
+      name: nameInput.value,
+      link: linkInput.value,
+    })
+    .then((newCardData) => {
+      const cardElement = createCard(newCardData);
+      cardSection.addItem(cardElement);
+      addCardPopup.close();
+    });
+}
 
-  cardSection.addItem(newCard);
-  addCardPopup.close();
-});
+const addCardPopup = new PopupWithForm(addCardPopupSelector, handleAddNewCard);
+
 addCardPopup.setEventListeners();
 
 const formList = Array.from(document.querySelectorAll(".popup__form"));

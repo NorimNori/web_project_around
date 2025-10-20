@@ -43,6 +43,19 @@ class Api {
       .then(this._checkResponse)
       .catch(this._handleError);
   }
+
+  addNewCard({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        link,
+      }),
+    })
+      .then(this._checkResponse)
+      .catch(this._handleError);
+  }
 }
 
 export const api = new Api({
