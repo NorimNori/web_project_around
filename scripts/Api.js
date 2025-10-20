@@ -14,4 +14,20 @@ class Api {
   _handleError(error) {
     console.log(error);
   }
+
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    })
+      .then(this._checkResponse)
+      .catch(this._handleError);
+  }
 }
+
+export const api = new Api({
+  baseUrl: "https://around-api.es.tripleten-services.com/v1",
+  headers: {
+    authorization: "abe5a634-69dc-47eb-a847-7bcef8fa75fb",
+    "Content-Type": "application/json",
+  },
+});

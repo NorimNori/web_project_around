@@ -5,6 +5,7 @@ import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
 import { initialCards, validationConfig } from "./validate.js";
+import { api } from "../scripts/Api.js";
 
 const cardsContainerSelector = ".cards__list";
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -91,4 +92,8 @@ profileEditButton.addEventListener("click", () => {
 
 addCardButton.addEventListener("click", () => {
   addCardPopup.open();
+});
+
+api.getUserInfo().then((userData) => {
+  console.log("respuesta:", userData);
 });
