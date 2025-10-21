@@ -65,6 +65,24 @@ class Api {
       .then(this._checkResponse)
       .catch(this._handleError);
   }
+
+  addLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    })
+      .then(this._checkResponse)
+      .catch(this._handleError);
+  }
+
+  removeLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    })
+      .then(this._checkResponse)
+      .catch(this._handleError);
+  }
 }
 
 export const api = new Api({

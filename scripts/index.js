@@ -40,13 +40,31 @@ function createCard(data) {
     handleCardClick,
     (cardInstance) => {
       popupConfirmation.open();
-
       popupConfirmation.setSubmitAction(() => {
-        api.deleteCard(cardInstance.getId()).then(() => {
-          cardInstance.deleteCard();
-          popupConfirmation.close();
-        });
+        api
+          .deleteCard(cardInstance.getId())
+          .then(() => {
+            cardInstance.deleteCard();
+            popupConfirmation.close();
+          })
+          .catch((err) => console.error("Error al eliminar tarjeta:", err));
       });
+    },
+    (cardId) => {
+      api
+        .addLike(cardId)
+        .then((updatedCard) => {
+          card.updateLikes(updatedCard);
+        })
+        .catch((err) => console.error("Error al dar like:", err));
+    },
+    (cardId) => {
+      api
+        .removeLike(cardId)
+        .then((updatedCard) => {
+          card.updateLikes(updatedCard);
+        })
+        .catch((err) => console.error("Error al quitar like:", err));
     }
   );
 
