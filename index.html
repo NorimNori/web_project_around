@@ -20,11 +20,14 @@
 
       <main class="content">
         <section class="profile page__section">
-          <img
-            class="profile__image"
-            src="./images/cindy-campbell.jpg"
-            alt="Imágen de perfil"
-          />
+          <div class="profile__image-container">
+            <img
+              class="profile__image"
+              src="./images/cindy-campbell.jpg"
+              alt="Imágen de perfil"
+            />
+            <div class="profile__image-edit"></div>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Cindy Campbell</h1>
             <button class="profile__edit-button" type="button"></button>
@@ -81,6 +84,33 @@
             />
             <span id="form-input-description-error" class="popup__error"></span>
             <button class="popup__save-button">Guardar</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="popup" id="popup-avatar">
+        <div class="popup__container" id="popup-avatar__container">
+          <form class="popup__form" id="popup-avatar__form">
+            <button class="popup__close" id="popup-avatar__close"></button>
+            <h2 class="popup__title" id="popup-avatar__title">
+              Cambiar foto de perfil
+            </h2>
+            <input
+              class="popup__input popup__input_avatar"
+              type="url"
+              id="popup__input_avatar"
+              minlength="2"
+              placeholder="Perfil url"
+              required
+            />
+            <span class="popup__error" id="popup__input_avatar-error"></span>
+            <button
+              type="submit"
+              class="popup__save-button"
+              id="popup-avatar__button"
+            >
+              Guardar
+            </button>
           </form>
         </div>
       </section>
