@@ -2,6 +2,7 @@ export default class Card {
   constructor(data, templateSelector, handleCardClick, handleDeleteClick) {
     this._name = data.name;
     this._link = data.link;
+    this._id = data._id;
     this._isLiked = data.isLiked;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
@@ -37,6 +38,10 @@ export default class Card {
 
   _handlePreview() {
     this._handleCardClick(this._name, this._link);
+  }
+
+  getId() {
+    return this._id;
   }
 
   generateCard() {

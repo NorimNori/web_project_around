@@ -42,8 +42,10 @@ function createCard(data) {
       popupConfirmation.open();
 
       popupConfirmation.setSubmitAction(() => {
-        cardInstance.deleteCard();
-        popupConfirmation.close();
+        api.deleteCard(cardInstance.getId()).then(() => {
+          cardInstance.deleteCard();
+          popupConfirmation.close();
+        });
       });
     }
   );
