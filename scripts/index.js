@@ -4,6 +4,7 @@ import Section from "./Section.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import PopupWithConfirmation from "./PopupWithConfirmation.js";
+import PopupWithAvatar from "./PopupWithAvatar.js";
 import UserInfo from "./UserInfo.js";
 import { validationConfig } from "./validate.js";
 import { api } from "../scripts/Api.js";
@@ -14,6 +15,8 @@ const addCardButton = document.querySelector(".profile__add-button");
 const profileImage = document.querySelector(".profile__image");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
+const profileAvatar = document.querySelector(".profile__image");
+const avatarEditButton = document.querySelector(".profile__image-edit");
 const profilePopupSelector = "#profile-edit-popup";
 const addCardPopupSelector = "#new-card-popup";
 const imagePopupSelector = ".popup__preview";
@@ -32,6 +35,19 @@ popupConfirmation.setEventListeners();
 function handleCardClick(name, link) {
   imagePopup.open({ name, link });
 }
+
+const popupAvatar = new PopupWithAvatar("#popup-avatar", (newAvatarLink) => {
+  popupAvatar.renderLoading(true);
+
+  api.updateAvatar(newAvatarLink).then((data) => {
+    profileAvatar.src = newAvatarLink;
+    popupAvatar.close();
+  });
+});
+
+popupAvatar.setEventListeners();
+
+avatarEditButton.addEventListener("click", () => popupAvatar.open());
 
 function createCard(data) {
   const card = new Card(
