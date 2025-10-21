@@ -3,6 +3,7 @@ import FormValidator from "./FormValidator.js";
 import Section from "./Section.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
+import PopupWithConfirmation from "./PopupWithConfirmation.js";
 import UserInfo from "./UserInfo.js";
 import { validationConfig } from "./validate.js";
 import { api } from "../scripts/Api.js";
@@ -25,10 +26,28 @@ const userInfo = new UserInfo({
 const imagePopup = new PopupWithImage(imagePopupSelector);
 imagePopup.setEventListeners();
 
+const popupConfirmation = new PopupWithConfirmation("#popup-confirmation");
+popupConfirmation.setEventListeners();
+
+function handleCardClick(name, link) {
+  imagePopup.open({ name, link });
+}
+
 function createCard(data) {
-  const card = new Card(data, "#card-template", (name, link) => {
-    imagePopup.open({ name, link });
-  });
+  const card = new Card(
+    data,
+    "#card-template",
+    handleCardClick,
+    (cardInstance) => {
+      popupConfirmation.open();
+
+      popupConfirmation.setSubmitAction(() => {
+        cardInstance.deleteCard();
+        popupConfirmation.close();
+      });
+    }
+  );
+
   return card.generateCard();
 }
 
