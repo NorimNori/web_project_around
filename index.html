@@ -83,7 +83,7 @@
               required
             />
             <span id="form-input-description-error" class="popup__error"></span>
-            <button class="popup__save-button">Guardar</button>
+            <button class="popup__save-button" type="submit">Guardar</button>
           </form>
         </div>
       </section>
@@ -96,9 +96,10 @@
               Cambiar foto de perfil
             </p>
             <input
-              class="popup__input popup__input_avatar"
               type="url"
               id="popup__input_avatar"
+              class="popup__input popup__input_avatar"
+              name="avatar"
               minlength="2"
               placeholder="Perfil url"
               required

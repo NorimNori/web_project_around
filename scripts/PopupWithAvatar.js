@@ -6,7 +6,6 @@ export default class PopupWithAvatar extends Popup {
     this._handleFormSubmit = handleFormSubmit;
     this._form = this._popup.querySelector(".popup__form");
     this._input = this._form.querySelector(".popup__input");
-    this._submitButton = this._form.querySelector(".popup__save-button");
   }
 
   setEventListeners() {
@@ -20,9 +19,5 @@ export default class PopupWithAvatar extends Popup {
   close() {
     super.close();
     this._form.reset();
-  }
-
-  renderLoading(isLoading) {
-    this._submitButton.textContent = isLoading ? "Guardando..." : "Guardar";
   }
 }

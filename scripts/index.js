@@ -39,10 +39,13 @@ function handleCardClick(name, link) {
 const popupAvatar = new PopupWithAvatar("#popup-avatar", (newAvatarLink) => {
   popupAvatar.renderLoading(true);
 
-  api.updateAvatar(newAvatarLink).then((data) => {
-    profileAvatar.src = newAvatarLink;
-    popupAvatar.close();
-  });
+  api
+    .updateAvatar(newAvatarLink)
+    .then((data) => {
+      profileAvatar.src = newAvatarLink;
+      popupAvatar.close();
+    })
+    .finally(() => popupAvatar.renderLoading(false));
 });
 
 popupAvatar.setEventListeners();
@@ -57,30 +60,25 @@ function createCard(data) {
     (cardInstance) => {
       popupConfirmation.open();
       popupConfirmation.setSubmitAction(() => {
+        popupConfirmation.renderLoading(true);
         api
           .deleteCard(cardInstance.getId())
           .then(() => {
             cardInstance.deleteCard();
             popupConfirmation.close();
           })
-          .catch((err) => console.error("Error al eliminar tarjeta:", err));
+          .finally(() => popupConfirmation.renderLoading(false));
       });
     },
     (cardId) => {
-      api
-        .addLike(cardId)
-        .then((updatedCard) => {
-          card.updateLikes(updatedCard);
-        })
-        .catch((err) => console.error("Error al dar like:", err));
+      api.addLike(cardId).then((updatedCard) => {
+        card.updateLikes(updatedCard);
+      });
     },
     (cardId) => {
-      api
-        .removeLike(cardId)
-        .then((updatedCard) => {
-          card.updateLikes(updatedCard);
-        })
-        .catch((err) => console.error("Error al quitar like:", err));
+      api.removeLike(cardId).then((updatedCard) => {
+        card.updateLikes(updatedCard);
+      });
     }
   );
 
@@ -101,16 +99,23 @@ const cardSection = new Section(
 cardSection.renderItems();
 
 function handleProfileFormUpdate() {
+  editProfilePopup.renderLoading(true);
+
   const nameInput = document.querySelector("#form-input-title");
   const aboutInput = document.querySelector("#form-input-description");
 
-  api.updateUserInfo(nameInput.value, aboutInput.value).then((data) => {
-    profileTitle.textContent = data.name;
-    profileDescription.textContent = data.about;
-    profileImage.src = data.avatar;
+  api
+    .updateUserInfo(nameInput.value, aboutInput.value)
+    .then((data) => {
+      profileTitle.textContent = data.name;
+      profileDescription.textContent = data.about;
+      profileImage.src = data.avatar;
 
-    editProfilePopup.close();
-  });
+      editProfilePopup.close();
+    })
+    .finally(() => {
+      editProfilePopup.renderLoading(false);
+    });
 }
 
 const editProfilePopup = new PopupWithForm(
@@ -124,6 +129,8 @@ function handleAddNewCard() {
   const nameInput = document.querySelector("#card-name-input");
   const linkInput = document.querySelector("#card-link-input");
 
+  addCardPopup.renderLoading(true);
+
   api
     .addNewCard({
       name: nameInput.value,
@@ -133,6 +140,9 @@ function handleAddNewCard() {
       const cardElement = createCard(newCardData);
       cardSection.addItem(cardElement);
       addCardPopup.close();
+    })
+    .finally(() => {
+      addCardPopup.renderLoading(false);
     });
 }
 

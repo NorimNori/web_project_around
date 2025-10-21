@@ -3,6 +3,10 @@ export default class Popup {
     this._popup = document.querySelector(popupSelector);
     this._closeButton = this._popup.querySelector(".popup__close");
     this._handleEscClose = this._handleEscClose.bind(this);
+    this._submitButton = this._popup.querySelector(".popup__save-button");
+    if (this._submitButton) {
+      this._defaultButtonText = this._submitButton.textContent;
+    }
   }
 
   open() {
@@ -29,5 +33,12 @@ export default class Popup {
         this.close();
       }
     });
+  }
+
+  renderLoading(isLoading) {
+    if (!this._submitButton) return;
+    this._submitButton.textContent = isLoading
+      ? "Guardando..."
+      : this._defaultButtonText;
   }
 }
