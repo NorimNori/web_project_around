@@ -19,4 +19,9 @@ export default class PopupWithConfirmation extends Popup {
       }
     });
   }
+
+  close() {
+    super.close();
+    this._handleSubmit = null;
+  }
 }
