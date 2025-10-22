@@ -52,34 +52,47 @@ popupAvatar.setEventListeners();
 
 avatarEditButton.addEventListener("click", () => popupAvatar.open());
 
+function handleDeleteCard(cardInstance) {
+  popupConfirmation.open();
+  popupConfirmation.setSubmitAction(() => {
+    popupConfirmation.renderLoading(true);
+
+    api
+      .deleteCard(cardInstance.getId())
+      .then(() => {
+        cardInstance.deleteCard();
+        popupConfirmation.close();
+      })
+      .finally(() => popupConfirmation.renderLoading(false));
+  });
+}
+
+function handleAddLike(card, cardId) {
+  api
+    .addLike(cardId)
+    .then((updatedCard) => {
+      card.updateLikes(updatedCard);
+    })
+    .catch((err) => console.error("Error al dar like:", err));
+}
+
+function handleRemoveLike(card, cardId) {
+  api
+    .removeLike(cardId)
+    .then((updatedCard) => {
+      card.updateLikes(updatedCard);
+    })
+    .catch((err) => console.error("Error al quitar like:", err));
+}
+
 function createCard(data) {
   const card = new Card(
     data,
     "#card-template",
     handleCardClick,
-    (cardInstance) => {
-      popupConfirmation.open();
-      popupConfirmation.setSubmitAction(() => {
-        popupConfirmation.renderLoading(true);
-        api
-          .deleteCard(cardInstance.getId())
-          .then(() => {
-            cardInstance.deleteCard();
-            popupConfirmation.close();
-          })
-          .finally(() => popupConfirmation.renderLoading(false));
-      });
-    },
-    (cardId) => {
-      api.addLike(cardId).then((updatedCard) => {
-        card.updateLikes(updatedCard);
-      });
-    },
-    (cardId) => {
-      api.removeLike(cardId).then((updatedCard) => {
-        card.updateLikes(updatedCard);
-      });
-    }
+    handleDeleteCard,
+    (cardId) => handleAddLike(card, cardId),
+    (cardId) => handleRemoveLike(card, cardId)
   );
 
   return card.generateCard();
@@ -180,16 +193,8 @@ api.getUserInfo().then((userData) => {
 });
 
 api.getInitialCards().then((cards) => {
-  const cardSection = new Section(
-    {
-      items: cards,
-      renderer: (item) => {
-        const cardElement = createCard(item);
-        cardSection.addItem(cardElement);
-      },
-    },
-    cardsContainerSelector
-  );
-
-  cardSection.renderItems();
+  cards.forEach((cardData) => {
+    const cardElement = createCard(cardData);
+    cardSection.addItem(cardElement);
+  });
 });
