@@ -2,7 +2,13 @@
 
 ## 📝 Descripción del proyecto
 
-**"Alrededor de los EE. UU."** es una galería web interactiva creada como parte del décimo proyecto del bootcamp de desarrollo web de [TripleTen](https://tripleten.com/). Ofrece una experiencia de usuario completa que incluye validación de formularios, visualización de errores en la interfaz, edición de perfil, creación de nuevas tarjetas con imagen, botones de “me gusta” y eliminación. Además, incorpora accesibilidad mejorada al permitir cerrar ventanas emergentes tanto con el teclado como haciendo clic fuera de ellas..
+**"Alrededor de los EE. UU."** es una galería web interactiva creada como parte del décimo proyecto del bootcamp de desarrollo web de [TripleTen](https://tripleten.com/).Ofrece una experiencia de usuario completa que incluye validación de formularios, visualización de errores en la interfaz, edición de perfil, creación de nuevas tarjetas con imagen, botones de “me gusta” y eliminación.
+
+Además, incorpora mejoras de accesibilidad al permitir cerrar ventanas emergentes tanto con el teclado como haciendo clic fuera de ellas.
+
+La información del perfil, incluida la imagen, puede actualizarse, y se ha implementado una confirmación para la eliminación de tarjetas.
+
+Actualmente, el proyecto cuenta con conexión a un servidor para la persistencia de datos.
 
 ### 🖱️ Funcionalidades implementadas:
 - Ventanas modales con funcionalidad de abrir/cerrar.
@@ -15,6 +21,10 @@
 - Vista ampliada de la imagen mediante un popup modal al hacer clic sobre la foto.
 - Validación de formularios.
 - Cierre de popup haciendo clic en superposición y al pulsar tecla *Esc*.
+- Edición de la información del perfil.
+- Actualización de la imagen de perfil.
+- Loaders en los botones de los pop-ups.
+- Confirmación para eliminar tarjetas.
 
 ### 💻 Tecnologías utilizadas:
 - HTML5
@@ -25,6 +35,8 @@
 - POO
 - Metodología BEM
 - Git & GitHub Pages
+- Conexión a API
+- Promises
 
 ### 🚀 Despliegue
 Puedes ver el proyecto en línea accediendo a través del siguiente enlace:
@@ -42,7 +54,6 @@ Puedes ver el proyecto en línea accediendo a través del siguiente enlace:
 
 A futuro, me gustaría implementar las siguientes mejoras:
 
-- Incorporar almacenamiento local o backend para persistencia de datos.
 - Añadir animaciones suaves al abrir/cerrar popups.
 
 ---

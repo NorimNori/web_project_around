@@ -41,7 +41,7 @@ const popupAvatar = new PopupWithAvatar("#popup-avatar", (newAvatarLink) => {
 
   api
     .updateAvatar(newAvatarLink)
-    .then((data) => {
+    .then(() => {
       profileAvatar.src = newAvatarLink;
       popupAvatar.close();
     })
